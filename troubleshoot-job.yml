@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: volume-troubleshooter
+spec:
+  template:
+    spec:
+      containers:
+      - name: troubleshooter
+        image: your-registry/volume-troubleshooter:latest
+        command: ["./troubleshoot-script.sh"]
+      restartPolicy: Never
+  backoffLimit: 4
